@@ -1,15 +1,18 @@
 import * as koa from "koa";
+import * as cors from 'koa2-cors';
 import * as koabody from "koa-body";
 import { router } from "./router/index"
 
 let app = new koa();
 
+app.use(cors());
 app.use(koabody());
 
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen(3001);
-console.log("the server is listen on the port:" + 3001);
+let port = 3002;
+app.listen(port);
+console.log("the server is listen on the port:" + port);
 
 export =app
