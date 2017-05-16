@@ -15,4 +15,4 @@ let port = 3002;
 app.listen(port);
 console.log("the server is listen on the port:" + port);
 
-export =app
+export = app
