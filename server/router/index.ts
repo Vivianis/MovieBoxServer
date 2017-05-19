@@ -1,7 +1,22 @@
 import * as Router from "koa-router";
+import * as Sequelize from "sequelize";
 
 export let router = new Router();
 
+let sequelize = new Sequelize('MovieStore', 'web', '', {
+    dialect: "mysql",
+    port: 3306
+});
+
+sequelize
+  .authenticate()
+  .complete(function(err) {
+      if (!!err){
+          console.log('Unable to connect to the database:', err)
+      } else {
+          console.log('Connection has been established successfully.')
+      }
+  })
 class MOVIE {
     Id: number;
     MovieName: string;
