@@ -1,57 +1,36 @@
 import { Table, Column, Model, BelongsTo, BelongsToMany, ForeignKey, HasOne, HasMany } from 'sequelize-typescript';
-import Genre from './genre'
-import Person from './person'
-import MovieActor from './movieActor'
 
 @Table
-export default class Movie extends Model<Movie> {
+export default class movie_store extends Model<movie_store> {
     @Column
-    name: string;
-
-    @ForeignKey(() => Genre)
-    @Column
-    genreId: number;
-
-    @BelongsTo(() => Genre)
-    genre: Genre;
-
-    @HasOne(() => Person, 'directMovieId')
-    director: Person;
-
-    @BelongsToMany(() => Person, () => MovieActor)
-    actors: Person[];
+    movie_name: string;
 
     @Column
-    showTime: string;
+    movie_director: string;
 
     @Column
-    imgUrl: string;
+    movie_actor1: string;
+
+    @Column
+    movie_actor2: string;
+
+    @Column
+    movie_actor3: string;
+
+    @Column
+    movie_style: string;
+
+    @Column
+    show_time: Date;
+
+    @Column
+    imge_url: string;
 
     static async getAll() {
-        return await Movie.findAll<Movie>({
-            include: [{
-                model: Genre
-            }, {
-                model: Person,
-                as: 'director'
-            }, {
-                model: Person,
-                as: 'actors'
-            }]
-        })
+        return await movie_store.findAll<movie_store>()
     }
 
     static async getById(id: number) {
-        return await Movie.findById<Movie>(id, {
-            include: [{
-                model: Genre
-            }, {
-                model: Person,
-                as: 'director'
-            }, {
-                model: Person,
-                as: 'actors'
-            }]
-        })
+        return await movie_store.findById<movie_store>()
     }
 }
