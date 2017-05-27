@@ -24,13 +24,13 @@ export default class movie_store extends Model<movie_store> {
     show_time: Date;
 
     @Column
-    imge_url: string;
+    image_url: string;
 
     static async getAll() {
         return await movie_store.findAll<movie_store>()
     }
 
     static async getById(id: number) {
-        return await movie_store.findById<movie_store>()
+        return await movie_store.findById<movie_store>(id)
     }
 }
