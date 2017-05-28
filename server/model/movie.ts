@@ -30,7 +30,11 @@ export default class movie_store extends Model<movie_store> {
     image_url: string;
 
     static async getAll() {
-        return await movie_store.findAll<movie_store>()
+        return await movie_store.findAll<movie_store>({
+            order: [
+                ['love_degree', 'DESC']
+            ]
+        })
     }
 
     static async getById(id: number) {
