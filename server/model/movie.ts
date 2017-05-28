@@ -29,6 +29,9 @@ export default class movie_store extends Model<movie_store> {
     @Column
     image_url: string;
 
+    @Column
+    movie_instr: string;
+
     static async getAll() {
         return await movie_store.findAll<movie_store>({
             order: [
