@@ -10,5 +10,10 @@ router.get("/movies", async (ctx) => {
 });
 router.get("/movies/:id", async (ctx) => {
     ctx.body = await movie_store.getById(ctx.params.id);
+});
+router.post("/movies/:id/degree/:degree", async (ctx) => {
+    movie_store.updateDegree(ctx.params.id, ctx.params.degree);
+    ctx.body = {}
+    ctx.status = 200;
 })
 

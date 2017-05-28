@@ -6,6 +6,9 @@ export default class movie_store extends Model<movie_store> {
     movie_name: string;
 
     @Column
+    love_degree: number;
+
+    @Column
     movie_director: string;
 
     @Column
@@ -32,5 +35,15 @@ export default class movie_store extends Model<movie_store> {
 
     static async getById(id: number) {
         return await movie_store.findById<movie_store>(id)
+    }
+    static async updateDegree(movieID: number,degree:number) {
+        movie_store
+            .update<movie_store>({
+                love_degree: degree
+            }, {where: {id: movieID}})
+            .then(() => {
+
+            });
+        console.log(movie_store);
     }
 }
