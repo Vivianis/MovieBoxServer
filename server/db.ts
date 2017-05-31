@@ -2,7 +2,7 @@ import { Promise } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 
 import movie_store from './model/movie';
-
+import seat_area from './model/seat';
 
 const sequelize = new Sequelize({
     name: 'MovieStore',
@@ -16,4 +16,8 @@ const sequelize = new Sequelize({
 export default function init() {
     sequelize
         .sync({ force: false })
+    seat_area.getSeats()
+            .then(seats => 
+                  console.log(`${seats}`)
+            )
 }

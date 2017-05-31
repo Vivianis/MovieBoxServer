@@ -48,9 +48,6 @@ export default class movie_store extends Model<movie_store> {
             .update<movie_store>({
                 love_degree: degree
             }, {where: {id: movieID}})
-            .then(() => {
-
-            });
-        console.log(movie_store);
+            .then(() => {});
     }
 }
