@@ -21,8 +21,7 @@ router.post("/movies/seat/:id", async (ctx) => {
     seat_area.updateSeat(ctx.params.id);
     ctx.body = {};
     ctx.status = 200;
-})
-router.get("/movies/getseat", async (ctx) => {
+});
+router.get("/seats", async (ctx) => {
     ctx.body = await seat_area.getSeats();
 });
-

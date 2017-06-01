@@ -16,8 +16,4 @@ const sequelize = new Sequelize({
 export default function init() {
     sequelize
         .sync({ force: false })
-    seat_area.getSeats()
-            .then(seats => 
-                  console.log(`${seats}`)
-            )
 }
